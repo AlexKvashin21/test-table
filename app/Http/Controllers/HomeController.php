@@ -30,6 +30,7 @@ class HomeController extends Controller
         $result = $this->getPreparedData($clients, $request);
         $resultWithPagination = $this->yourPaginator($result->toArray(), 25, $request);
         return Inertia::render('Table', [
+            'title' => 'Таблица',
             'offices' => (isset($filterData['offices'])) ? $filterData['offices'] : collect([]),
             'managers' => (isset($filterData['managers'])) ? $filterData['managers'] : collect([]),
             'lawyers' => (isset($filterData['lawyers'])) ? $filterData['lawyers'] : collect([]),
@@ -50,6 +51,9 @@ class HomeController extends Controller
             'first_date' => 'integer|between:1,31',
             'second_date' => 'integer|between:1,31',
         ]);
+
+
+
         $data = $request->all();
         $user = User::findOrfail($data['id']);
         $user->update($data);
@@ -212,8 +216,8 @@ class HomeController extends Controller
             $userMonthPayment = $paymentMounth->where('user_id', $client->id);
             $item['payment_select'] = [];
             if ($userMonthPayment->isNotEmpty()) {
-                foreach ($userMonthPayment as $payment) {
-                    $item['payment_select'][$payment->id] = ['date' => Carbon::parse($payment->payed_at)->format('d.m.Y'), 'amount' => $payment->amount];
+                foreach ($userMonthPayment as $payment){
+                    $item['payment_select'][] = ['id' => $payment->id, 'date' => Carbon::parse($payment->payed_at)->format('d.m.Y'), 'amount' => $payment->amount];
                 }
             }
             $item['all_payments'] = (int)$client->sum_all_payment;

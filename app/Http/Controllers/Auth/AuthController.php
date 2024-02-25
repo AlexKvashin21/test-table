@@ -14,7 +14,7 @@ class AuthController extends Controller
 {
     public function create()
     {
-        return Inertia::render('Auth');
+        return Inertia::render('Auth', ['title' => 'Логин']);
     }
     /**
      * залогинится
@@ -39,5 +39,5 @@ class AuthController extends Controller
         return redirect()->route('login');
     }
 }
-    
+
 

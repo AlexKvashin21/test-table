@@ -28,7 +28,7 @@ Route::controller(AuthController::class)->group(function() {
         Route::post('/login', 'store');
     });
     Route::middleware('auth')->group(function() {
-        Route::post('/logout', 'logout');
+        Route::post('/logout', 'logout')->name('logout');
     });
 });
 Route::middleware('auth','can:check-worker')->group(function() {

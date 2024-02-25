@@ -15,17 +15,22 @@
         "@inertiajs/progress": "0.2.7",
         "@tailwindcss/forms": "0.4.0",
         "@vue/compiler-sfc": "3.2.31",
+        "autoprefixer": "^10.4.17",
         "axios": "0.21.4",
         "laravel-mix": "6.0.43",
         "lodash": "4.17.21",
+        "postcss": "^8.4.35",
         "resolve-url-loader": "5.0.0",
         "sass": "^1.63.6",
         "sass-loader": "^12.1.0",
-        "tailwindcss": "3.0.23",
+        "tailwindcss": "^3.4.1",
         "vue": "3.2.31",
         "vue-loader": "16.8.3"
     },
     "dependencies": {
+        "@headlessui/vue": "^1.7.19",
+        "@heroicons/vue": "^2.1.1",
+        "@vuepic/vue-datepicker": "^8.1.1",
         "air-datepicker": "3.1.1",
         "vue-uuid": "2.1.0"
     }

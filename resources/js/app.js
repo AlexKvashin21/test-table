@@ -1,3 +1,5 @@
+import Layout from "./layouts/Layout.vue";
+
 require("./bootstrap");
 
 import { createApp, h } from "vue";
@@ -9,7 +11,12 @@ const appName =
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
-    resolve: (name) => require(`./Pages/${name}.vue`),
+    resolve: (name) => {
+        const page = require(`./Pages/${name}.vue`).default
+        page.layout = page.layout || Layout;
+
+        return page
+    },
     setup({ el, app, props, plugin }) {
         return createApp({ render: () => h(app, props) })
             .use(plugin)
